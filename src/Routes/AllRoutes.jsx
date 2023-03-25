@@ -1,27 +1,24 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../Common-Component/Navbar";
-import Footer from "../Common-Component/Footer";
-import Electronics from "../Pages/Electronics";
+import Items from "../Pages/Items";
+import ItemDetail from '../Pages/ItemsDetail';
 import Header from '../Common-Component/Header';
-import Items from '../Pages/Items';
-import Jwellery from "../Pages/Jwellery";
 
-function AllRoutes() {
+const AllRoutes = () => {
   return (
-    <div>
+    <div className="AllRoutes">
       <BrowserRouter>
         <Navbar />
+        <Header/>
         <Routes>
-        <Route path="/" element={<Header />}/>
-          <Route path="items" element={<Items />} />
-          <Route path="/electronics" element={<Electronics />} />
-          <Route path="/jwellery" element={<Jwellery />} />
+          <Route path="/" element={<Items/>} />
+          <Route path="/product/:productId" element={<ItemDetail/>} />
+          <Route>404 Not Found!</Route>
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default AllRoutes;
