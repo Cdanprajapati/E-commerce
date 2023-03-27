@@ -1,27 +1,33 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../Common-Component/Navbar";
-import Footer from "../Common-Component/Footer";
-import Electronics from "../Pages/Electronics";
-import Header from '../Common-Component/Header';
-import Items from '../Pages/Items';
-import Jwellery from "../Pages/Jwellery";
+import Items from "../Pages/Items";
+import ItemDetail from "../Pages/ItemsDetail";
+import Header from "../Common-Component/Header";
+import Footer from '../Common-Component/Footer';
+import NotFound from "../Pages/NotFound";
 
-function AllRoutes() {
+const Router = () => (
+  <Routes>
+    <Route path="/" element={<Items />} />
+    <Route path="/product/:productId" element={<ItemDetail />} />
+    <Route path="/*" element={<NotFound />} />
+  </Routes>
+  
+);
+
+const AllRoutes = () => {
   return (
-    <div>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="AllRoutes">
         <Navbar />
-        <Routes>
-        <Route path="/" element={<Header />}/>
-          <Route path="items" element={<Items />} />
-          <Route path="/electronics" element={<Electronics />} />
-          <Route path="/jwellery" element={<Jwellery />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
+        <Header />
+        <Router />  
+        <Footer />      
+      </div>
+      
+    </BrowserRouter>
   );
-}
+};
 
 export default AllRoutes;
