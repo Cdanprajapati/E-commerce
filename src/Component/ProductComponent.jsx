@@ -39,9 +39,9 @@ const ProductComponent = () => {
                           {item.description}
                         </p> */}
             <hr className="pb-2" />
-            <button className="rounded-l-lg cursor-pointer text-slate-50 bg-yellow-500 p-2 hover:bg-pink-600 hover:text-slate-500 focus:outline-none focus:ring focus:bg-pink-400 ">
+           <button className="rounded-l-lg cursor-pointer text-slate-50 bg-yellow-500 p-2 hover:bg-pink-600 hover:text-slate-500 focus:outline-none focus:ring focus:bg-pink-400 ">
               Add To Cart
-            </button>
+            </button>  
             <button className="rounded-r-lg cursor-pointer text-slate-50 bg-orange-500 p-2 hover:bg-pink-600 hover:text-slate-500 focus:outline-none focus:ring focus:bg-pink-400 ">
               Buy Now
             </button>

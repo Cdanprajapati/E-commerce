@@ -4,7 +4,7 @@ export function getRequest(URL) {
   return axiosClient.get(`/${URL}`).then((response) => response);
 }
 
-export function postRequest(payload , URL = base) {
+export function SignUpRequest(payload , URL = base) {
   return axiosClient.post(`/${URL}`, payload).then((response) => response);
 }
 

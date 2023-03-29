@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <div className="bg-slate-500 w-100 h-80">
+      <div className="bg-slate-500 w-100 h-content-fit">
         <h1 className="text-center text-slate-300 text-6xl pt-6">Eflyer</h1>
         <div className="grid grid-cols-6 gap-4">
           <div className="col-start-2 col-span-4">

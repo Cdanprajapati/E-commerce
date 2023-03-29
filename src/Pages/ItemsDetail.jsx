@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
+import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProduct,
@@ -9,7 +9,7 @@ import {
 import SVG from '../Component/SVG';
 
 
-const ProductDetails = () => {
+const ProductDetails = (id) => {
   const { productId } = useParams();
   let product = useSelector((state) => state.product);
   const { image, title, price, description } = product;
@@ -91,9 +91,10 @@ const ProductDetails = () => {
                   <span className="title-font font-medium text-2xl text-gray-900">
                     Price : {price}$
                   </span>
+                  <Link to={`/product/${id}`}>   
                   <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded">
                     Add Cart
-                  </button>
+                  </button> </Link>
                   <button className="flex ml-auto text-white bg-indigo-300 border-0 py-2 px-6 focus:outline-none hover:bg-pink-200 rounded">
                     Buy Now
                   </button>
