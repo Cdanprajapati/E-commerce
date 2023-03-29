@@ -1,8 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 
 function AddToCartItem() {
+
+  const products = useSelector((state) => state.allProducts.products);
+  const renderList = products.map((product) => {
+    const { id, title, image } = product;
+
   return (
-    <div>
+    <div key={id}>
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">
@@ -11,16 +18,15 @@ function AddToCartItem() {
                 <img
                   alt="team"
                   class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                  src="https://dummyimage.com/200x200"
+                  src={image}
                 />
                 <div class="flex-grow sm:pl-8">
                   <h2 class="title-font font-medium text-lg text-gray-900">
-                    Holden Caulfield
+                    {title}
                   </h2>
                   <h3 class="text-gray-500 mb-3">UI Developer</h3>
                   <p class="mb-4">
-                    DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                    pack vaporware.
+                    {description}
                   </p>
                   <span class="inline-flex">
                     <a class="text-gray-500">
@@ -251,6 +257,8 @@ function AddToCartItem() {
       </section>
     </div>
   );
-}
+  });
+  return <>{renderList}</>
+};
 
 export default AddToCartItem;

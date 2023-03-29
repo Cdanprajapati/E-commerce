@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import React, { useEffect} from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux/actions/productsActions";
@@ -23,7 +23,7 @@ const ProductPage = () => {
   console.log("Products :", products);
   return (
     <div>
-      <div className="w-full h-96">
+      <div className="w-full">
         <div className="text-black pt-3 text-5xl  text-center">
           T-Shirt Store
         </div>
