@@ -23,6 +23,5 @@ export const removeSelectedProduct = () => {
 export const userInputReducer = () => {
   return {
     type: ActionTypes.USER_INPUT_REDUCER,
-  }
-}
-
+  };
+};
