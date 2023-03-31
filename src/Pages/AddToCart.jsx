@@ -1,29 +1,13 @@
-import React, { useEffect} from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../redux/actions/productsActions";
-import ProductComponent from "../Component/ProductComponent";
+import React from "react";
 import AddToCartItem from "./AddToCartItem";
 
 
 function AddToCart() {
-  const products = useSelector((state) => state.allProducts.products);
-  const dispatch = useDispatch();
-  const fetchProducts = async () => {
-    const response = await axios
-      .get("https://fakestoreapi.com/products")
-      .catch((err) => {
-        console.log("Err: ", err);
-      });
-    dispatch(setProducts(response.data));
-  };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-  console.log(products);
   return (
     <div>
+      <h1 className="text-center text-6xl py-4 text-bold text-slate-800">Add To Cart Items</h1>
+      <hr />
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto flex flex-wrap items-center">
           <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">

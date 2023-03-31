@@ -43,7 +43,7 @@ function Footer() {
               Help Line Number : +1 1800 1200 1200
             </p>
 
-            <div className="text-center pt-6">
+            <div className="text-center py-6">
               © 2045 All Rights Reserved. By HTML Design
             </div>
           </div>
