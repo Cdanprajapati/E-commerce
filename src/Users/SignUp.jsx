@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { SignUpRequest } from "../Axios/Axios";
+import { useSelector, useDispatch } from "react-redux";
+import { inputSignUp } from "../ReduxTool/counterSlice";
+import { postRequest } from "../Axios/axiosClient";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -8,18 +10,25 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const HandleSubmit = () => {
-    let body = { firstName, lastName, email, password, confirmPassword };
-    async function fetchUser() {
-      try {
-        const user = await SignUpRequest("user/register", {
-          data: body,
-        });
-      } catch (error) {
-        console.log(error);
-      }
+  const data = {firstName, lastName, email, password, confirmPassword};
+  const userRegistration = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+  console.log(userRegistration)
+
+  const HandleSubmit = async() => {
+    dispatch(inputSignUp(data));
+    try {
+      const user = await postRequest("user/register", {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+      });
+      console.log(user,"here ---->");
+    } catch (error) {
+      console.log(error);
     }
-    fetchUser();
   };
 
   return (
