@@ -2,16 +2,16 @@ import React from "react";
 
 function Footer() {
   return (
-    <div>
-      <div class="bg-slate-500 w-100 h-80">
-        <h1 class="text-center text-slate-300 text-6xl pt-6">Eflyer</h1>
-        <div class="grid grid-cols-6 gap-4">
-          <div class="col-start-2 col-span-4">
-            <div class="flex justify-between">
-              <div class="text-slate-200 text-3xl pl-6">Email</div>
-              <div class="text-slate-200 text-3xl pr-6">Subscribe</div>
+    <>
+      <div className="bg-slate-500 w-100 h-content-fit">
+        <h1 className="text-center text-slate-300 text-6xl pt-6">Eflyer</h1>
+        <div className="grid grid-cols-6 gap-4">
+          <div className="col-start-2 col-span-4">
+            <div className="flex justify-between">
+              <div className="text-slate-200 text-3xl pl-6">Email</div>
+              <div className="text-slate-200 text-3xl pr-6">Subscribe</div>
             </div>
-            <div class="text-center text-slate-200">
+            <div className="text-center text-slate-200">
               <hr />
             </div>
           </div>
@@ -43,13 +43,13 @@ function Footer() {
               Help Line Number : +1 1800 1200 1200
             </p>
 
-            <div className="text-center pt-6">
+            <div className="text-center py-6">
               © 2045 All Rights Reserved. By HTML Design
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

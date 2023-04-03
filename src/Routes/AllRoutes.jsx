@@ -1,27 +1,37 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../Common-Component/Navbar";
+import Items from "../Pages/Items";
+import Login from "../Users/Login";
+import ItemsDetail from "../Pages/ItemsDetail";
+import Header from "../Common-Component/Header";
 import Footer from "../Common-Component/Footer";
-import Electronics from "../Pages/Electronics";
-import Header from '../Common-Component/Header';
-import Items from '../Pages/Items';
-import Jwellery from "../Pages/Jwellery";
+import NotFound from "../Pages/NotFound";
+import SignUp from "../Users/SignUp";
+import AddToCart from "../Pages/AddToCart";
 
-function AllRoutes() {
+const Router = () => (
+  <Routes>
+    <Route path="/" element={<Items />} />
+    <Route path="/itemsDetail/:productsId" element={<ItemsDetail />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/addToCart" element={<AddToCart />} />
+    <Route path="/signUp" element={<SignUp />} />
+    <Route path="/*" element={<NotFound />} />
+  </Routes>
+);
+
+const AllRoutes = () => {
   return (
-    <div>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="AllRoutes">
         <Navbar />
-        <Routes>
-        <Route path="/" element={<Header />}/>
-          <Route path="items" element={<Items />} />
-          <Route path="/electronics" element={<Electronics />} />
-          <Route path="/jwellery" element={<Jwellery />} />
-        </Routes>
+        <Header />
+        <Router />
         <Footer />
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default AllRoutes;

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Index() {
+function Address() {
   return (
     <div>
-      
+      This is address
     </div>
   )
 }
 
-export default Index
+export default Address
