@@ -6,14 +6,17 @@ import ItemDetail from "../Pages/ItemsDetail";
 import Header from "../Common-Component/Header";
 import Footer from '../Common-Component/Footer';
 import NotFound from "../Pages/NotFound";
+import SignUp from '../Users/SignUp';
+import AddToCart from "../Pages/AddToCart";
 
 const Router = () => (
   <Routes>
     <Route path="/" element={<Items />} />
     <Route path="/product/:productId" element={<ItemDetail />} />
+    <Route path="/product/:productId" element={ <AddToCart/> } />
+    <Route path="/signUp" element={<SignUp />} />
     <Route path="/*" element={<NotFound />} />
-  </Routes>
-  
+  </Routes>  
 );
 
 const AllRoutes = () => {
