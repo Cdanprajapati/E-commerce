@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useReducer } from "react";
 
 const initialState = {
   firstName: "",
@@ -13,19 +12,19 @@ export const SignUpReducer = createSlice({
   initialState,
   reducers: {
     setFirstName: (state, action) => {
-      state.name = action.payload;
+      state.firstName = action.payload;
     },
     setLastName: (state, action) => {
-      state.name = action.payload;
+      state.lastName = action.payload;
     },
     setEmail: (state, action) => {
-      state.name = action.payload;
+      state.email = action.payload;
     },
     setPassword: (state, action) => {
       state.password = action.payload;
     },
     setConfirmPassword: (state, action) => {
-      state.email = action.payload;
+      state.confirmPassword = action.payload;
     },
     // clear: (state) => {
     //   state.name = "";

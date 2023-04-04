@@ -9,14 +9,16 @@ import Footer from "../Common-Component/Footer";
 import NotFound from "../Pages/NotFound";
 import SignUp from "../Users/SignUp";
 import AddToCart from "../Pages/AddToCart";
+import ForgetPassword from "../Users/ForgetPassword";
 
 const Router = () => (
   <Routes>
     <Route path="/" element={<Items />} />
-    <Route path="/itemsDetail/:productsId" element={<ItemsDetail />} />
+    <Route path="/itemsDetail" element={<ItemsDetail />}  />
     <Route path="/login" element={<Login />} />
     <Route path="/addToCart" element={<AddToCart />} />
     <Route path="/signUp" element={<SignUp />} />
+    <Route path="/forgetpassword" element={<ForgetPassword/>} />
     <Route path="/*" element={<NotFound />} />
   </Routes>
 );

@@ -1,14 +1,14 @@
 import axios from "axios";
-// const baseUrl = "http://192.168.29.145:3000/api/";
+const baseUrl = "http://192.168.29.145:3001/api/";
 
-const baseUrl = "https://fakestoreapi.com/"
 const axiosClient = axios.create({
   baseURL: baseUrl,
 });
 
-
 export function getRequest(URL = baseUrl) {
-  return axiosClient.get(`/${URL}`).then((response) => response);  
+  return axiosClient
+  .get(`/${URL}`)
+  .then((response) => response);  
 }
 
 export function postRequest( URL = baseUrl, payload) {

@@ -90,7 +90,7 @@ function AddToCartItem() {
                 </div>
               </div>
             </div>
-            <div className="p-4 bg-pink-200 my-3 w-content-fit">
+            {/* <div className="p-4 bg-pink-200 my-3 w-content-fit">
               <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                 <img
                   alt="team"
@@ -269,7 +269,7 @@ function AddToCartItem() {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

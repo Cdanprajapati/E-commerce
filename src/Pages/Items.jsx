@@ -6,7 +6,7 @@ const ProductPage = () => {
   return (
     <div>
       <div className="w-full">
-        <div className="text-black pt-3 text-5xl  text-center">
+        <div className="text-black pt-4 text-5xl  text-center">
           T-Shirt Store
         </div>
         <div className="grid grid-cols-6 gap-4">
