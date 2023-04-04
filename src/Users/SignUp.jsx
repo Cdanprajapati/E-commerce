@@ -21,6 +21,7 @@ function SignUp() {
   const dispatch = useDispatch();
 
   const HandleSubmit = async () => {
+    console.log("called-->")
     try {
       const user = await postRequest("user/register", {
         firstName,
@@ -50,11 +51,11 @@ function SignUp() {
             </div>
           </div>
 
-          <div className="lg:w-1/2 md:w-2/3 mx-auto">
+          <div className="lg:w-1/2 md:w-2/3 md:p-3 mx-auto">
             <div className="flex flex-wrap -m-2">
               <div className="p-1 w-1/2">
                 <div className="relative">
-                  <label for="name" className="leading-7 text-sm text-gray-600">
+                  <label className="leading-7 text-sm text-gray-600">
                     Firts Name
                   </label>
                   <input
@@ -68,7 +69,7 @@ function SignUp() {
               </div>
               <div className="p-1 w-1/2">
                 <div className="relative">
-                  <label for="text" className="leading-7 text-sm text-gray-600">
+                  <label className="leading-7 text-sm text-gray-600">
                     Last Name
                   </label>
                   <input
@@ -84,7 +85,6 @@ function SignUp() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
-                    for="email"
                     className="leading-7 text-sm text-gray-600"
                   >
                     Email
@@ -102,7 +102,6 @@ function SignUp() {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label
-                    for="password"
                     className="leading-7 text-sm text-gray-600"
                   >
                     Password
@@ -120,7 +119,6 @@ function SignUp() {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label
-                    for="ConfirmPassword"
                     className="leading-7 text-sm text-gray-600"
                   >
                     Confirm Password

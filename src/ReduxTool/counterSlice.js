@@ -17,14 +17,6 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
-    // inputSignUp: (state, data) => {
-    //   state.value = data.payload;
-    //   console.log(data.payload, "here data...!");
-    // },
-    // inputlogin: (state, data) => {
-    //   state.value = data.payload;
-    //   console.log(data.payload, "here is login data....>")
-    // }
   },
 });
 

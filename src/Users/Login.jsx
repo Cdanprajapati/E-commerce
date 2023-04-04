@@ -36,7 +36,7 @@ function Login() {
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label for="name" className="leading-7 text-sm text-gray-600">
+                  <label className="leading-7 text-sm text-gray-600">
                     Email
                   </label>
                   <input
@@ -52,7 +52,6 @@ function Login() {
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
-                    for="password"
                     className="leading-7 text-sm text-gray-600"
                   >
                     Password
@@ -78,7 +77,6 @@ function Login() {
                   Don't have account Go to
                 </p>
                 <Link to="/signUp">
-                  {" "}
                   <p className="text-center font-medium">Sign Up</p>
                 </Link>
               </div>
