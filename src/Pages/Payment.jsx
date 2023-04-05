@@ -4,7 +4,7 @@ import UPI from "../Assets/UPI.jpg";
 function Payment() {
   return (
     <div>
-      <div className="w-full h-96">
+      <div className="w-full">
         <div className="text-black pt-3 text-5xl  text-center">
           Make Payment..!
         </div>
@@ -100,7 +100,7 @@ function Payment() {
                   </div>
                 </div>
                 <div className="p-2 w-full">
-                  <button className="flex mx-auto text-white hover:bg-pink-300 hover:text-slate-700 focus:bg-green-400 bg-indigo-400 border-0 py-1 px-8 focus:outline-none  rounded text-lg">
+                  <button className="flex mx-auto text-white hover:bg-gray-300 hover:text-slate-700 focus:text-slate-700 focus:bg-green-400 bg-indigo-400 border-0 py-1 px-8 focus:outline-none  rounded text-lg">
                     Proceed to Pay
                   </button>
                 </div>
