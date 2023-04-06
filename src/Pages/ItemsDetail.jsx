@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { TiStar } from "react-icons/ti";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams , useNavigate} from "react-router-dom";
 import SVG from "../Component/SVG";
-import { getRequest } from "../Axios/axiosClient";
+import { getRequest, postRequest } from "../Axios/axiosClient";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const data = useParams();
-  console.log(data.productId, "---->");
   const [item, setItem] = useState({});
 
   useEffect(() => {
@@ -22,6 +22,19 @@ const ProductDetails = () => {
     fetchallData(data.productId);
   }, []);
   console.log(item, "--->s");
+
+  const AddtoCart = async() => {
+    try {
+      const cartItem = await postRequest("product/cart", {
+        data:item
+      })
+      navigate('/addToCartItem');
+      console.log(cartItem,"--this is cart item---->")
+    } catch (error) {
+      navigate('/login')
+      console.log(error.response.statusText);
+    }
+  }
 
   return (
     <div>
@@ -117,11 +130,13 @@ const ProductDetails = () => {
                     </svg>
                   </button>
                 </div>
-                <button className="bg-blue-300 ms-4 text-white font-bold py-2 px-4 border border-blue-700 hover:bg-slate-300 hover:text-slate-800 rounded">
-                  <Link to={`AddToCartItem/${item.id}`}>Add To Cart</Link>
+                <button className="bg-blue-300 ms-4 text-slate-600 font-bold py-2 px-4 border border-blue-700 hover:bg-slate-300 hover:text-slate-800 rounded"
+                onClick={AddtoCart}
+                >
+                  Add To Cart
                 </button>
-
-                <button className="bg-blue-300 text-white font-bold py-2 px-4 mx-3 border border-blue-700 hover:bg-slate-300 hover:text-slate-800 rounded">
+                {/* // {`addToCartItem/${item.id}`} */}
+                <button className="bg-blue-300 text-slate-600 font-bold py-2 px-4 mx-3 border border-blue-700 hover:bg-slate-300 hover:text-slate-800 rounded">
                   <Link to="/payment">Buy Now</Link>
                 </button>
               </div>
