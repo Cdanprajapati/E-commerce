@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TiStar } from "react-icons/ti";
 import { getRequest } from "../Axios/axiosClient";
 
 const ProductComponent = () => {
+  const navigate = useNavigate();
   const [item, setItem] = useState([]);
 
   useEffect(() => {
@@ -13,11 +14,21 @@ const ProductComponent = () => {
   const fetchallData = async () => {
     try {
       const responce = await getRequest("product");
-      console.log(responce.data);
+      console.log(responce.data, "heyyyyyyyyy-->");
       setItem(responce.data);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const AddToCart = (value) => {
+    let newIds = [value];
+    let ids = JSON.parse(localStorage.getItem('ids')) || []; 
+    newIds.forEach(function(id) {
+      ids.push(id);
+    });
+    localStorage.setItem('ids', JSON.stringify(ids));
+    navigate("/addToCartItem")
   };
 
   return (
@@ -30,19 +41,22 @@ const ProductComponent = () => {
           >
             <div className="bg-gray-100 p-6 rounded-lg lg:w-[400px] xl:w-[400px]">
               <div className="h-[300px] w-[300px] lg:mx-auto xl:mx-auto">
-                <img
-                  className="rounded w-[100%] h-[100%] xl:w-[300px] object-cover mx-auto mb-6"
-                  src={value.imageurl}
-                  alt="content"
-                />
+                <Link to={`itemsDetail/${value.id}`}>
+                  <img
+                    className="rounded w-[100%] h-[100%] xl:w-[300px] object-cover mx-auto mb-6"
+                    src={value.imageurl}
+                    alt="content"
+                  />
+                </Link>
               </div>
-              <h3 className="text-blue-500 text-1xl h-[50px]"></h3>
               <hr />
-              <h2 className="text-lg text-gray-900 font-medium title-font">
-                {value.title.length > 20
-                  ? `${value.title?.slice(0, 20)}...`
-                  : value.title}
-              </h2>
+              <Link to={`itemsDetail/${value.id}`}>
+                <h2 className="text-lg text-gray-900 font-medium title-font">
+                  {value.title.length > 20
+                    ? `${value.title?.slice(0, 20)}...`
+                    : value.title}
+                </h2>
+              </Link>
               <div className="md:ml-auto md:mr-auto flex flex-wrap text-base">
                 <p className="bg-green-700 flex flex-wrap text-gray-950 rounded">
                   <a className="hover:text-slate-100 text-slate-50 ps-2">
@@ -76,11 +90,14 @@ const ProductComponent = () => {
                 <Link to={`itemsDetail/${value.id}`}>Read More..</Link>
               </div>
               <hr className="pb-2" />
-              <button className="rounded-l-sm cursor-pointer text-slate-50 bg-slate-400 p-2 hover:bg-slate-500 hover:text-slate-800 focus:outline focus:ring focus:bg-slate-500 ">
-                <Link to={`/addToCartItem/${value.id}`}> Add To Cart</Link>
+              <button
+                className="rounded-l-sm cursor-pointer text-slate-50 bg-slate-400 p-2 hover:bg-slate-500 hover:text-slate-800 focus:outline focus:ring focus:bg-slate-500 "
+                onClick={() => AddToCart(value.id)}
+              >
+                Add To Cart
               </button>
-              <button className="rounded-r-sm cursor-pointer text-slate-50 bg-slate-500 p-2 hover:bg-slate-400 hover:text-slate-800 focus:outline focus:ring focus:bg-slate-400 ">
-                <Link to={`itemsDetail/${value.id}`}> Buy Now</Link>
+              <button className="cursor-pointer text-slate-50 bg-slate-500 p-2 hover:bg-slate-400 rounded-sm-r hover:text-slate-800 focus:outline focus:ring focus:bg-slate-400 ">
+                <Link to="/payment">Buy Now</Link>
               </button>
             </div>
           </div>

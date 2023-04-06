@@ -1,9 +1,55 @@
-import React from "react";
+import React, {useState} from "react";
+import { postRequest } from "../Axios/axiosClient";
+import {
+  CardNumberElement,
+  CardCvcElement,
+  CardExpiryElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import axios from "axios";
 import UPI from "../Assets/UPI.jpg";
 
 function Payment() {
+  const [success, setSuccess] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(
+        CardCvcElement,
+        CardExpiryElement,
+        CardNumberElement
+      ),
+    });
+
+    if (!error) {
+      try {
+        const { id } = paymentMethod;
+        const response = await postRequest("payment", {
+          amount: 10000,
+          id,
+        });
+
+        if (response.data.success) {
+          console.log("Successful Payment");
+          setSuccess(true);
+        }
+      } catch (error) {
+        console.log("Error", error);
+      }
+    } else {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div>
+
+      {!success ? (
       <div className="w-full">
         <div className="text-black pt-3 text-5xl  text-center">
           Make Payment..!
@@ -100,7 +146,9 @@ function Payment() {
                   </div>
                 </div>
                 <div className="p-2 w-full">
-                  <button className="flex mx-auto text-white hover:bg-gray-300 hover:text-slate-700 focus:text-slate-700 focus:bg-green-400 bg-indigo-400 border-0 py-1 px-8 focus:outline-none  rounded text-lg">
+                  <button className="flex mx-auto text-white hover:bg-gray-300 hover:text-slate-700 focus:text-slate-700 focus:bg-green-400 bg-indigo-400 border-0 py-1 px-8 focus:outline-none  rounded text-lg"
+                  onClick={handleSubmit}
+                  >
                     Proceed to Pay
                   </button>
                 </div>
@@ -125,7 +173,12 @@ function Payment() {
             </div>
           </div>
         </section>
-      </div>
+      </div> ) : (
+        <div className="text-center">
+          <h2 className="text-2xl text-green-500">Payment successful</h2>
+          <h3 className="text-5xl text-red-600">Thank you for your payment...!</h3>
+        </div>
+      )}
     </div>
   );
 }
